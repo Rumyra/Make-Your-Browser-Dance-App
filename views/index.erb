@@ -53,7 +53,7 @@
 						</aside>
 					</section>
 
-					<section>
+					<!--<section>
 						<h2><del>Happy New Year!</del></h2>
 						<aside class="notes">
 							Too late?
@@ -62,10 +62,10 @@
 							I left uni 10 years ago - 10 years ago...
 							That means it was ten years since this ->
 						</aside>
-					</section>
+					</section>-->
 
 					<section>
-						<h2 class="fragment roll-in">Winamp</h2>
+						<h2>Winamp</h2>
 						<audio controls>
 							<source src="media/llama.mp3" type="audio/mp3" />
 						</audio>
@@ -88,10 +88,10 @@
 
 					<section>
 						<h2>My name is Ruth and I am a VJ</h2>
-						<p>(No not a DJ)</p>
 						<blockquote>
 							&ldquo;VJing is a broad designation for realtime visual performance&rdquo; - Wikipedia
 						</blockquote>
+						<aside class="notes">
 							Used a piece of software called Visual Jockey
 							Line in of the sound - band, dj
 							Software detected frequencies. Beat, bass - 
@@ -102,7 +102,7 @@
 					</section>
 
 					<section>
-						<h2>Get To The Point Already!</h2>
+						<h2>I was thinking</h2>
 						<p class="fragment roll-in">CSS Animations</p>
 						<p class="fragment roll-in">Web Audio API (+ others)</p>
 						<p class="fragment roll-in">Can we recreate my old uni days?</p>
@@ -220,7 +220,7 @@
 					<section>
 						<style>
 
-						@keyframes flashing {
+						@-webkit-keyframes flashing {
 						  0%   { opacity: 0; }
 						  50%   { opacity: 1; }
 						  100% { opacity: 0; }
@@ -253,15 +253,15 @@
 				<section>
 					<h2>Creating CSS Animation</h2>
 					<pre><code data-trim contenteditable>
-						@webkitKeyframes flashing {
-						  0%   { opacity: 0; }
-						  50%   { opacity: 1; }
-						  100% { opacity: 0; }
-						}
+@keyframes flashing {
+  0%   { opacity: 0; }
+  50%   { opacity: 1; }
+  100% { opacity: 0; }
+}
 
-						.lights i {
-							animation:flashing 2s infinite;
-						}
+.lights i {
+	animation:flashing 2s infinite;
+}
 					</code></pre>
 					<h3>You'll need vendor prefixes :)</h3>
 					<p>List of animatable properties: <a href="http://oli.jp/2010/css-animatable-properties/">http://oli.jp/2010/css-animatable-properties/</a></p>
@@ -331,26 +331,24 @@
 					</aside>
 				</section>
 
-				<section>
+				<!--<section>
 					<h2>I Mean Really</h2>
 					<iframe style="height:700px;width:1000px;background-color:white; border:4px solid hsla(200,10%,50%,0.5);" src="http://anthonycalzadilla.com/css3-ATAT/index.html"></iframe>
-				</section>
+				</section>-->
 
 				<section>
 					<style>
-					.lights i:nth-child(1) {top:50px; left:50px;}
-					.lights i:nth-child(2) {top:50px; left:150px;}
-					.lights i:nth-child(3) {top:50px; left:250px;}
-					.lights i:nth-child(4) {top:100px; left:50px;}
-					.lights i:nth-child(5) {top:100px; left:150px;}
-					.lights i:nth-child(6) {top:100px; left:250px;}
+					.lights i:nth-child(1) {top:100px; left:100px;}
+					.lights i:nth-child(2) {top:100px; left:200px;}
+					.lights i:nth-child(3) {top:100px; left:300px;}
+					.lights i:nth-child(4) {top:100px; left:400px;}
+					.lights i:nth-child(5) {top:100px; left:500px;}
+					.lights i:nth-child(6) {top:100px; left:600px;}
+					.lights i:nth-child(7) {top:100px; left:700px;}
+					.lights i:nth-child(8) {top:100px; left:800px;}
 					</style>
 					<h2>Expanding on the light</h2>
 					<div class="lights">
-						<i></i>
-						<i></i>
-						<i></i>
-						<i></i>
 						<i></i>
 						<i></i>
 						<i></i>
@@ -365,28 +363,28 @@
 					</aside>
 				</section>
 
-				<section>
+				<!--<section>
 					<h2>Now For Some Sound</h2>
 					<p>Create new instance Web Audio API</p>
-					<!-- ALL CODE IN ONE -->
-					<!-- Explain better -->
 					<pre><code data-trim contenteditable>
-	var audioContext = (window.AudioContext || 
-  window.webkitAudioContext || window.mozAudioContext);
+var audioContext = (window.AudioContext || 
+window.webkitAudioContext || window.mozAudioContext);
 
-	if (contextClass) {
-  // Web Audio API is available.
-  var myAudioContext = new audioContext();  
+if (contextClass) {
+	// Web Audio API is available.
+	var myAudioContext = new audioContext();
+}
 					</code></pre>
 					<aside class="notes">
 						Initiate new instance of the audio class
 						Now audio class based around nodes
 					</aside>
-				</section>
+				</section>-->
 
 				<section>
 					<h2>Web Audio API</h2>
-					<p>Based around nodes</p>
+					<p>It's magic!</p>
+					<p class="fragment roll-in">Based around nodes</p>
 					<p class="fragment roll-in">Source node -> sound you are loading in</p>
 					<p class="fragment roll-in">Output node -> where the sound wants to come out</p>
 					<aside class="notes">
@@ -395,20 +393,11 @@
 					</aside>
 				</section>
 
-				<section>
+				<!--<section>
 					<h2>Get Input Node</h2>
 					<p class="fragment roll-in">Load audio</p>
 					<p class="fragment roll-in">HTTP request</p>
 					<p class="fragment roll-in"><code>audio</code> element & <code>createMediaElementSource</code> method</p>
-					<!-- <pre><code data-trim contenteditable>
-//get audio element
-var audioElement = document.getElementById('elementID');
-//create source
-var sourceNode = myAudioContext.createMediaElementSource(audioElement);
-//connect source to destination (speakers)
-sourceNode.connect(myAudioContext.destination);
-//decode into buffer
-					</code></pre> -->
 					<aside class="notes">
 						The input node in this example is sound file
 						Load either with HTTP request or audio element
@@ -426,7 +415,7 @@ function loadSound() {
 
 	request.onload = function() {
 		//take from http request and decode into buffer
-		audioContext.decodeAudioData(request.response, function(buffer) {
+		myAudioContext.decodeAudioData(request.response, function(buffer) {
 	    	audioBuffer = buffer;
 	     });
 		}
@@ -455,7 +444,7 @@ var source = myAudioContext.createMediaElementSource(audioElement);
 					<aside class="notes">
 						We have a source, which we can do stuff with.
 					</aside>
-				</section>
+				</section>-->
 <!--18-->
 				<section>
 					<!-- cut out code -->
@@ -475,9 +464,9 @@ myAudioContext.createBiquadFilter();
 					<p class="fragment roll-in">Create sound</p>
 					<pre class="fragment roll-in"><code data-trim contenteditable>
 //Create sound
-myAudioContext.createOscillator;
+myAudioContext.createOscillator();
 					</code></pre>
-					<p>The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
+					<p class="fragment roll-in">The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
 					<aside class="notes">
 						You can do lots of things with the web audio API.
 						Simple
@@ -509,7 +498,7 @@ analyser.getByteTimeDomainData();
 					</aside>
 				</section>
 
-				<section>
+<!--				<section>
 					<h2>A Little Theory</h2>
 					<img class="fragment roll-in" src="media/soundwave.gif" />
 					<p class="fragment roll-in">Image by University of Utah, http://gslc.genetics.utah.edu</p>
@@ -529,45 +518,42 @@ analyser.getByteTimeDomainData();
 					<p class="fragment roll-in">Javascript typed array to pass in data</p>
 					<p class="fragment roll-in">Each array item reflects a frequency</p>
 					<p class="fragment roll-in">The gain of that frequncy is the value that's passed into that item</p>
-					<pre><code>var frequencyData = new Uint8Array(1024);</code></pre>
+					<pre class="fragment roll-in"><code data-trim contenteditable>var frequencyData = new Uint8Array(1024);</code></pre>
 					<p class="fragment roll-in">Know your frequency range by your file sample rate - it's half</p>
 						<aside class="notes">
 							need array to pass what's returned with getFrequencyByteData
 							a javascript typed array is ideal
 							The more items in the array the more frequencies 
-							Know your file frequency range by it's sample rate - sure we've all heard of 41k mp3s or 48k - this is a range of 48,000hz - don't forget that you have a plus and minus, so the frequency range is half sample range - ie 24,000hz
+							Know your file frequency range by it's sample rate - sure we've all heard of 41k mp3s or 48k - this is a range of 48,000hz - ?don't forget that you have a plus and minus, so the frequency range is half sample range? - ie 24,000hz due to niquest theorem?
 							If you create an array with 24 items, first item will give you the gain at 1000hz, teh second at 2000 hz and so on.
 							1024 items gives us a sample of frequencies at 23.44hx apart - that's a nice resolution
 							HARD WORK DONE - relax
 						</aside>
-				</section>
+				</section>-->
 
 				<section>
-					<h2>Putting it all together</h2>
-					<p class="fragment roll-in">Use <code>requestAnimationFrame</code> to call the analyser</p>
+					<h2>More magic (& some code)</h2>
+					<!--<p class="fragment roll-in">Use <code>requestAnimationFrame</code> to call the analyser</p>
 					<p class="fragment roll-in">Get data and control the CSS animation</p>
-					<pre><code>
-						element.style.animationPlayState = "paused";
-						element.style.animationPlayState = "running";
-					</code></pre>
-					<p class="fragment roll-in">Loop through our lights, match them to a frequency and set them alight</p>
-					<pre><code>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+element.style.animationPlayState = "paused";
+element.style.animationPlayState = "running";
+					</code></pre>-->
+					<p>Loop through our lights, match them to a frequency and set them alight</p>
+					<pre>
 //get light elements
 var lights = document.getElementsByTagName('i');
 var totalLights = lights.length;
 
-for (var i=0; i<totalLights; i++) {
-  //get frequencyData key
-  var freqDataKey = i*8;
-	//if gain is over threshold for that frequency animate light
+for (var i=0; i<totalLights; i){
+	var freqDataKey = i*8;
   if (frequencyData[freqDataKey] > 160){
-    //start animation on element
     lights[i].style.opacity = "1";
   } else {
     lights[i].style.opacity = "0.2";
   }
 }
-					</code></pre>
+					</pre>
 					<aside class="notes">
 						Use requestAnimationFrame (I prefer it to setinterval or settimeout)
 						Control CSS animation - animation play state not the best way - may have a really long animation control frames in the middle of
@@ -576,18 +562,17 @@ for (var i=0; i<totalLights; i++) {
 					</aside>
 				</section>
 
-				<section>
+				<!--<section>
 					<h2>Real Sound</h2>
-					<p>dancing.rumyra.com</p>
 					<p class="fragment roll-in">Let's make it bigger!</p>
 					<p class="fragment roll-in">We need environment audio</p>
 					<p class="fragment roll-in">No line in functionality</p>
-					<p class="fragment roll-in">Hello getUserMedia</p>
-					<pre><code>
-						var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
+					<p class="fragment roll-in">Hello <code>getUserMedia</code></p>
+					<pre class="fragment roll-in"><code data-trim contenteditable>
+var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
 					</code></pre>
 					<aside class="notes">
-						Let's mak it better - let's put in a proper audio track and lots more lights, more lights = more frequencies!
+						Let's make it better - let's put in a proper audio track and lots more lights, more lights = more frequencies!
 						DEMO
 						But we're in a venue - the audio we really want to come from what's playing
 						No line in functionality
@@ -595,15 +580,29 @@ for (var i=0; i<totalLights; i++) {
 						As long as I have my laptop I have a mic
 						DEMO
 					</aside>
+				</section>-->
+
+				<section>
+					<h2>New web APIs</h2>
+					<p></p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
 				</section>
 
-
+				<section>
+					<h2>See For Yourself</h2>
+					<p><a href="http://dancing.rumyra.com">http://dancing.rumyra.com</a></p>
+					<aside class="notes">
+						All these demos are at dancing.rumyra.com
+					</aside>
+				</section>
 				
 				<!-- <section>
 					Whoop we did it - we can take a sound wave, get some data from it and use that to manipulate visuals - all in a browser.
 				</section> -->
 
-				<section>
+				<!--<section>
 					<h2>What's next?</h2>
 					<p class="fragment roll-in">Different visuals</p>
 					<p class="fragment roll-in">canvas, SVG & 3D</p>
@@ -616,7 +615,7 @@ for (var i=0; i<totalLights; i++) {
 						Other Web API's
 						Vibration demos - firefox android
 					</aside>
-				</section>
+				</section>-->
 
 				<section>
 					<h2>Thank you</h2>
