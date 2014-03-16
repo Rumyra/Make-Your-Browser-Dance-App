@@ -94,7 +94,7 @@
 						<aside class="notes">
 							Used a piece of software called Visual Jockey
 							Line in of the sound - band, dj
-							Software detected frequencies. Beat, bass - 
+							Software detected frequencies. Beat, bass -
 							Imported/created visuals - images, 3d models, video clips
 							Used analysed values to animate visuals
 							Much like the winamp visualiser.
@@ -109,14 +109,14 @@
 						<aside class="notes">
 							As I was getting nostagic...
 							I started thinking about the technology we have now
-							
-							For the past ten years I've bene engrossed with designing website layouts, more recently apps - all pretty static, coding html & css, 
+
+							For the past ten years I've bene engrossed with designing website layouts, more recently apps - all pretty static, coding html & css,
 
 							I had left my VJing days behind.
-							
+
 							Then we got CSS animations
 							And a web audio API
-							
+
 							Suddenly I thoguht to myself - is it now possible - let's find out
 
 							What do we need for POC
@@ -246,7 +246,7 @@
 							<i id="onelight"></i>
 						</div>
 						<aside class="notes">
-							
+
 						</aside>
 					</section>
 
@@ -367,7 +367,7 @@
 					<h2>Now For Some Sound</h2>
 					<p>Create new instance Web Audio API</p>
 					<pre><code data-trim contenteditable>
-var audioContext = (window.AudioContext || 
+var audioContext = (window.AudioContext ||
 window.webkitAudioContext || window.mozAudioContext);
 
 if (contextClass) {
@@ -381,12 +381,24 @@ if (contextClass) {
 					</aside>
 				</section>-->
 
+
 				<section>
 					<h2>Web Audio API</h2>
-					<p>It's magic!</p>
-					<p class="fragment roll-in">Based around nodes</p>
+				</section>
+
+				<section data-background="media/magic.gif">
+
+				</section>
+
+				<section data-background="media/mixing.jpg">
+
+				</section>
+
+				<section>
+					<h2>Based around nodes</h2>
 					<p class="fragment roll-in">Source node -> sound you are loading in</p>
 					<p class="fragment roll-in">Output node -> where the sound wants to come out</p>
+					<p class="fragment roll-in">The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
 					<aside class="notes">
 						Input node - sound in - usually file
 						Output node - sound out - usually speakers
@@ -466,7 +478,7 @@ myAudioContext.createBiquadFilter();
 //Create sound
 myAudioContext.createOscillator();
 					</code></pre>
-					<p class="fragment roll-in">The <a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API O'Reilly book</a> by Boris Smus is free to read online!</p>
+
 					<aside class="notes">
 						You can do lots of things with the web audio API.
 						Simple
@@ -523,7 +535,7 @@ analyser.getByteTimeDomainData();
 						<aside class="notes">
 							need array to pass what's returned with getFrequencyByteData
 							a javascript typed array is ideal
-							The more items in the array the more frequencies 
+							The more items in the array the more frequencies
 							Know your file frequency range by it's sample rate - sure we've all heard of 41k mp3s or 48k - this is a range of 48,000hz - ?don't forget that you have a plus and minus, so the frequency range is half sample range? - ie 24,000hz due to niquest theorem?
 							If you create an array with 24 items, first item will give you the gain at 1000hz, teh second at 2000 hz and so on.
 							1024 items gives us a sample of frequencies at 23.44hx apart - that's a nice resolution
@@ -562,6 +574,8 @@ for (var i=0; i<totalLights; i){
 					</aside>
 				</section>
 
+				<!-- what about video - show video mixing-->
+
 				<!--<section>
 					<h2>Real Sound</h2>
 					<p class="fragment roll-in">Let's make it bigger!</p>
@@ -584,17 +598,23 @@ var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
 
 				<section>
 					<h2>New web APIs</h2>
-					<p>Geolocation</p>
+					<p class="fragment roll-in">DOM</p>
+					<p class="fragment roll-in">Geolocation</p>
 					<p class="fragment roll-in">Web RTC</p>
 					<p class="fragment roll-in">getUserMedia</p>
 					<p class="fragment roll-in">Vibration API</p>
 					<p class="fragment roll-in">Ambient Light API</p>
 					<p class="fragment roll-in">Proximity</p>
+					<p class="fragment roll-in">Web Speech API</p>
 					<p class="fragment roll-in"><a href="https://wiki.mozilla.org/WebAPI">https://wiki.mozilla.org/WebAPI</p>
 					<aside class="notes">
 						All these demos are at dancing.rumyra.com
 					</aside>
 				</section>
+
+				<!-- activate video with voice-->
+
+				<!-- throw another api into the mix - vibration -->
 
 				<section>
 					<h2>See For Yourself</h2>
@@ -605,7 +625,12 @@ var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
 						All these demos are at dancing.rumyra.com
 					</aside>
 				</section>
-				
+
+				<!-- What does all this mean - to the industry, to you entering it as developers -->
+				<!-- web vs native, not debate anymore-->
+				<!-- I can't and wont tell you what languages to concentrate on - do something you enjoy - as long as you have the ideas you have the mans with all languages -->
+				<!-- Get excited and make stuff - hack earrings -->
+
 				<!-- <section>
 					Whoop we did it - we can take a sound wave, get some data from it and use that to manipulate visuals - all in a browser.
 				</section> -->
@@ -624,6 +649,22 @@ var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
 						Vibration demos - firefox android
 					</aside>
 				</section>-->
+
+				<section>
+					<h2>What am I getting at?</h2>
+				</section>
+
+				<section>
+					<h2>Web vs Native</h2>
+				</section>
+
+				<section>
+					<h2>Every Project is Different</h2>
+				</section>
+
+				<section>
+					<h2>Get Excited and Make Things</h2>
+				</section>
 
 				<section>
 					<h2>Thank you</h2>
@@ -652,7 +693,7 @@ var mediaStreamSource = myAudioContext.createMediaStreamSource(stream);
 				</section>
 			</secion>
 
-				
+
 
 			</div>
 
